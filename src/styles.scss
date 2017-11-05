@@ -1,1 +1,85 @@
 /* You can add global styles to this file, and also import other style files */
+@import '~@angular/material/prebuilt-themes/purple-green.css';
+@import '~@angular/material/theming';
+
+@import url('https://fonts.googleapis.com/css?family=Lobster|Pacifico|Anton|Indie+Flower');
+@import url('https://fonts.googleapis.com/css?family=Anton');
+
+$pacifico-font: 'Pacifico', sans-serif;
+$lobster-font: 'Lobster', sans-serif;
+$anton-font: 'Anton', sans-serif;
+$flower-font: 'Indie Flower', cursive;
+
+.toolbar-font{
+  font-family: $lobster-font;
+}
+
+//$custom-typography: mat-typography-config(
+//  $font-family: 'Pacifico, sans-serif',
+//  $subheading-2: mat-typography-level(32px, 48px, 700)
+//  //$body-1: mat-typography-level(16px, 24px, 500)
+//);
+
+//@include mat-base-typography($custom-typography);
+
+
+h2{
+  font-family: $pacifico-font;
+}
+
+h3, h4{
+  font-family: $flower-font;
+}
+
+body {
+  padding: 0;
+  margin: 0;
+  font-family: $anton-font;
+}
+
+.container {
+  //margin: 20px;
+  display: flex;
+}
+
+agm-map {
+  height: 300px;
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+//@import '~@angular/material/prebuilt-themes/deeppurple-amber.css';
+//@import '~@angular/material/theming';
+////@import url('https://fonts.googleapis.com/css?family=Berkshire+Swash|Roboto:400,500i');
+//@import url('https://fonts.googleapis.com/css?family=Berkshire+Swash|Germania+One|Modak|Oswald');
+//
+//$custom-typography: mat-typography-config(
+//  $font-family: 'Oswald, sans-serif');
+//@include angular-material-typography($custom-typography);
+//
+//$cust-headings: mat-typography-config(
+//  $font-family: 'Berkshire Swash, cursive');
+//@include mat-base-typography($cust-headings);
+//
+//body{
+//  padding: 0;
+//  margin: 0;
+//}
+
+
+
+
+
+

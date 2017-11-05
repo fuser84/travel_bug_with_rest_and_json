@@ -1,0 +1,59 @@
+<div class="container"
+     fxLayout="row"
+     fxLayout.sm="column"
+     fxLayout.xs="column"
+     fxLayoutAlign.gt-md="space-around center"
+     fxLayoutGap="10px"
+     fxLayoutGap.xs="0">
+
+  <div fxFlex="40" *ngIf="festival">
+    <mat-card>
+      <mat-card-header>
+        <mat-card-title>
+          <h3>{{ festival.name | uppercase }}</h3>
+        </mat-card-title>
+      </mat-card-header>
+      <img mat-card-image src="{{festival.image}}" alt="{{festival.name}}">
+      <mat-card-content>
+        <p> {{festival.description}}</p>
+      </mat-card-content>
+      <mat-card-actions>
+        <div class="button-row">
+          <button mat-raised-button>LIKE</button>
+          <button mat-fab color="primary">
+            <mat-icon>share</mat-icon>
+          </button>
+          <button mat-fab color="warn">
+            <mat-icon>favorite border</mat-icon>
+          </button>
+        </div>
+      </mat-card-actions>
+    </mat-card>
+  </div>
+
+  <div fxFlex="50">
+    <mat-nav-list *ngIf="festival">
+      <h3>{{festival.name | uppercase}} location</h3>
+      <agm-map [latitude]="festival.latitude" [longitude]="festival.longitude">
+        <agm-marker [latitude]="festival.latitude" [longitude]="festival.longitude"></agm-marker>
+      </agm-map>
+      <h2>Share you comments or ...</h2>
+      <button mat-raised-button color="primary">...Book the hotel before travel</button>
+      <mat-progress-bar mode="buffer" color="primary"></mat-progress-bar>
+      <mat-card>
+      <mat-card-content>
+      <mat-list-item *ngFor="let festival_comment of festival.comments">
+        <p mat-line>{{festival_comment.comment}}</p>
+        <p mat-line>{{festival_comment.rating}} Stars</p>
+        <p matLine>
+          <span>--{{festival_comment.author}}</span>
+          <span>{{festival_comment.date | date}}</span>
+        </p>
+      </mat-list-item>
+      </mat-card-content>
+      </mat-card>
+    </mat-nav-list>
+
+  </div>
+
+</div>

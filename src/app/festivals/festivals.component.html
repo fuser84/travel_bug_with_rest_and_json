@@ -1,0 +1,24 @@
+<div [ngStyle]="{'background-image':'url(./assets/img/festival.jpg)'}"
+  class="container"
+     fxLayout="column"
+     fxLayoutGap="10px">
+  <div fxFlex>
+    <div>
+      <h2>Festivals</h2>
+      <hr>
+    </div>
+  </div>
+
+  <div fxFlex>
+  <!--fxflex defines one flex unit-->
+  <mat-grid-list cols="2" rowHeight="400px">
+    <mat-grid-tile *ngFor="let festival of festivals" (click) = "onSelect(festival)">
+      <img height="350px" src={{festival.image}} alt={{festival.name}}>
+      <mat-grid-tile-footer>
+        <h1 mat-line>{{festival.name | uppercase}}</h1>
+      </mat-grid-tile-footer>
+    </mat-grid-tile>
+  </mat-grid-list>
+  </div>
+</div>
+<app-festivaldetail [festival] = "selectedFestival"></app-festivaldetail>

@@ -1,0 +1,73 @@
+
+
+<div>
+  <div fxLayout="row"
+       fxLayout.sm="column"
+       fxLayout.xs="column"
+       fxLayoutAlign.gt-md="space-around center"
+       fxLayoutGap="5px"
+       parallax [config]="{
+parallaxInitVal: 50,
+parallaxRatio: .26
+}" id="first-example">
+  </div>
+  <h2>Upcoming Festivals</h2>
+  <hr>
+  <div class="home_container"
+       fxLayout="row"
+       fxLayout.sm="column"
+       fxLayout.xs="column"
+       fxLayoutAlign.gt-md="space-around center"
+       fxLayoutGap="5px">
+
+    <mat-card *ngIf="metalPromotion" fxFlex>
+      <mat-card-header>
+        <div mat-card-avatar></div>
+        <mat-card-title>
+          <h3>{{metalPromotion.name | uppercase}}</h3>
+        </mat-card-title>
+      </mat-card-header>
+      <img mat-card-image src={{metalPromotion.image}} alt={{metalPromotion.name}}>
+      <mat-card-content>
+        <p>{{metalPromotion.description}}
+        </p>
+      </mat-card-content>
+    </mat-card>
+
+    <mat-card *ngIf="drumPromotion" fxFlex>
+      <mat-card-header>
+        <div mat-card-avatar></div>
+        <mat-card-title>
+          <h3>{{drumPromotion.name | uppercase}}</h3>
+          <img mat-card-image src={{drumPromotion.image}} alt={{drumPromotion.name}}>
+        </mat-card-title>
+      </mat-card-header>
+      <mat-card-content>
+        <p>{{drumPromotion.description}}</p>
+      </mat-card-content>
+    </mat-card>
+
+    <mat-card *ngIf="indiePromotion" fxFlex>
+      <mat-card-header>
+        <div mat-card-avatar></div>
+        <mat-card-title>
+          <h3>{{indiePromotion.name | uppercase}}</h3>
+          <img mat-card-image src={{indiePromotion.image}} alt={{indiePromotion.name}}>
+        </mat-card-title>
+      </mat-card-header>
+      <mat-card-content>
+        <p>{{indiePromotion.description}}</p>
+      </mat-card-content>
+    </mat-card>
+  </div>
+  <div fxLayout="row"
+       fxLayout.sm="column"
+       fxLayout.xs="column"
+       fxLayoutAlign.gt-md="space-around center"
+       fxLayoutGap="5px"
+       parallax id="second-example">
+  </div>
+</div>
+
+
+

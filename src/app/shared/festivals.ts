@@ -2,10 +2,12 @@ import { Festival } from './festival';
 
 export const FESTIVALS: Festival[] = [
   {
+    id: 0,
     name: 'Wacken',
     image: '/assets/img/Wacken.jpg',
     music_style: 'Metal',
-    attendance_price: '~300$',
+    attendance_price: 300,
+    featured: true,
     description: 'summer open-air heavy metal music festival. It takes place annually in the village of ' +
     'Wacken in Schleswig-Holstein, northern Germany, 80 kilometres (50 mi) northwest of Hamburg.',
     comments: [
@@ -27,10 +29,12 @@ export const FESTIVALS: Festival[] = [
   },
 
   {
+    id: 1,
     name: 'Zaxidfest',
     image: '/assets/img/Zaxidfest.jpg',
     music_style: 'Mix(Rock, Metal, Pop)',
-    attendance_price: '~40$',
+    attendance_price: 40,
+    featured: false,
     description: 'an annual international music and art festival held in the middle of August near Lviv, ' +
     'Ukraine.',
     comments: [
@@ -51,10 +55,12 @@ export const FESTIVALS: Festival[] = [
     longitude: 23.566668
   },
   {
+    id: 2,
     name: 'Faine Misto',
     image: '/assets/img/fayne_misto.jpeg',
     music_style: 'Rock, Metal',
-    attendance_price: '~40$',
+    attendance_price: 50,
+    featured: false,
     description: 'an annual international music festival held in the middle of July near Ternopil, Ukraine.',
     comments: [
       {
@@ -74,10 +80,12 @@ export const FESTIVALS: Festival[] = [
     longitude: 25.4754
   },
   {
+    id: 3,
     name: 'LET IT ROLL',
     image: '/assets/img/let-it-roll.jpg',
     music_style: 'Drum and Bass',
-    attendance_price: '~100$',
+    attendance_price: 100,
+    featured: false,
     description: "the world's biggest drum and bass music festival which takes place in Czech Republic",
     comments: [
       {

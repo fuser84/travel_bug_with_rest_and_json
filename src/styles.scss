@@ -2,13 +2,14 @@
 @import '~@angular/material/prebuilt-themes/purple-green.css';
 @import '~@angular/material/theming';
 
-@import url('https://fonts.googleapis.com/css?family=Lobster|Pacifico|Anton|Indie+Flower');
+@import url('https://fonts.googleapis.com/css?family=Lobster|Pacifico|Anton|Indie+Flower|Permanent+Marker');
 @import url('https://fonts.googleapis.com/css?family=Anton');
 
 $pacifico-font: 'Pacifico', sans-serif;
 $lobster-font: 'Lobster', sans-serif;
 $anton-font: 'Anton', sans-serif;
 $flower-font: 'Indie Flower', cursive;
+$marker-font: 'Permanent Marker', cursive;
 
 .toolbar-font{
   font-family: $lobster-font;
@@ -22,6 +23,9 @@ $flower-font: 'Indie Flower', cursive;
 
 //@include mat-base-typography($custom-typography);
 
+h1{
+  font-family: $marker-font;
+}
 
 h2{
   font-family: $pacifico-font;
@@ -37,15 +41,55 @@ body {
   font-family: $anton-font;
 }
 
-.container {
-  //margin: 20px;
-  display: flex;
-}
+//.container {
+//  margin: 5px;
+//  display: flex;
+//}
+
+
 
 agm-map {
   height: 300px;
 }
 
+a:link {
+  color: mediumturquoise;
+}
+
+$lt-gray: #ddd;
+$background-dark: #512DA8;
+$background-light: #9575CD;
+$background-pale: #D1C4E9;
+$primary-color-dark:   #512DA8;
+$primary-color:        #673AB7;
+$primary-color-light:  #D1C4E9;
+$primary-color-text:   #FFFFFF;
+$accent-color:         #FFC107;
+$accent-color-plus:    #249646;
+$primary-text-color:   #212121;
+$secondary-text-color: #757575;
+$divider-color:        #BDBDBD;
+
+@mixin zero-margin($pad-up-down, $pad-left-right) {
+  margin: 0px auto;
+  padding: $pad-up-down $pad-left-right;
+}
+
+
+.background-primary {
+  background-color: $background-dark!important;
+}
+.background-accent {
+  background-color: $accent-color-plus!important;
+}
+.text-floral-white {
+  color: floralwhite!important;
+}
+
+//automatic spacing
+.flex-spacer {
+  flex: 1 1 auto;
+}
 
 
 

@@ -1,0 +1,46 @@
+<mat-toolbar mat-dialog-title color="accent">
+  Login Form
+  <span class="flex-spacer"></span>
+  <button mat-button mat-dialog-close><i class="fa fa-close"></i></button>
+</mat-toolbar>
+
+<!--debug proposes-->
+<!--<p>{{user | json }}</p>-->
+
+<form novalidate #loginForm="ngForm" (ngSubmit)="onSubmit()">
+  <mat-dialog-content>
+  <p>
+    <mat-input-container color="accent">
+      <input matInput placeholder="Username" type="text" [(ngModel)]="user.username" name="username"
+             #username="ngModel" required>
+      <span matSuffix><i class="material-icons">assignment_ind</i></span>
+      <mat-hint>
+        <span [hidden]="username.pristine">
+          <span [hidden]="!username.errors?.required">username is required</span>
+        </span>
+      </mat-hint>
+    </mat-input-container>
+    <mat-input-container color="accent">
+      <input matInput placeholder="Password" type="password" [(ngModel)]="user.password"
+             #password="ngModel" name="password" required>
+      <span matSuffix><i class="fa fa-key" aria-hidden="true"></i></span>
+      <mat-hint>
+        <span [hidden]="password.pristine">
+          <span [hidden]="!password.errors?.required">password is required</span>
+        </span>
+      </mat-hint>
+    </mat-input-container>
+  </p>
+  <p>
+    <mat-checkbox [(ngModel)] = "user.remember" name="remember">
+      Remember Me
+    </mat-checkbox>
+  </p>
+  </mat-dialog-content>
+  <mat-dialog-actions>
+  <span class="flex-spacer"></span>
+    <button mat-button mat-dialog-close>Cancel</button>
+    <button type="submit" mat-button class="background-accent text-floral-white"
+            [disabled]="loginForm.form.invalid">Login</button>
+  </mat-dialog-actions>
+</form>

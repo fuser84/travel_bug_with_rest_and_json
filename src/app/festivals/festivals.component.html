@@ -1,5 +1,5 @@
 <div [ngStyle]="{'background-image':'url(./assets/img/festival.jpg)'}"
-  class="container"
+  class="festivals_container"
      fxLayout="column"
      fxLayoutGap="10px">
   <div fxFlex>
@@ -12,7 +12,7 @@
   <div fxFlex>
   <!--fxflex defines one flex unit-->
   <mat-grid-list cols="2" rowHeight="400px">
-    <mat-grid-tile *ngFor="let festival of festivals" (click) = "onSelect(festival)">
+    <mat-grid-tile *ngFor="let festival of festivals" [routerLink]="['/festivaldetail', festival.id]">
       <img height="350px" src={{festival.image}} alt={{festival.name}}>
       <mat-grid-tile-footer>
         <h1 mat-line>{{festival.name | uppercase}}</h1>
@@ -21,4 +21,4 @@
   </mat-grid-list>
   </div>
 </div>
-<app-festivaldetail [festival] = "selectedFestival"></app-festivaldetail>
+

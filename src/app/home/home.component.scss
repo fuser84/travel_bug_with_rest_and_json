@@ -1,0 +1,44 @@
+//body, html {
+//  height: 100%;
+//}
+//
+//.parallax {
+//  /* The image used */
+//  background-image: url('../../assets/img/fest_photo.jpg');
+//
+//  /* Full height */
+//  height: 100%;
+//
+//  /* Create the parallax scrolling effect */
+//  background-attachment: fixed;
+//  background-position: center;
+//  background-repeat: no-repeat;
+//  background-size: cover;
+//}
+//
+//@media only screen and (max-device-width: 1024px) {
+//  .parallax {
+//    background-attachment: scroll;
+//  }
+//}
+
+*[parallax] {
+  width: 1920px;
+  height: 350px;
+
+  background-size: 100%;
+}
+
+.home_container {
+  margin-bottom: 5px;
+  display: flex;
+}
+
+#first-example {
+  background-image: url('../../assets/img/fest_photo.jpg');
+}
+
+#second-example {
+  background-image: url('../../assets/img/fest_photo2.jpg');
+}
+

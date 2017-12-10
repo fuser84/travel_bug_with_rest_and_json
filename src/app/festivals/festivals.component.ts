@@ -2,7 +2,9 @@ import {Component, OnInit} from '@angular/core';
 
 import {Festival} from '../shared/festival';
 import {CommentLink} from '../shared/commentLink';
-import { FESTIVALS } from '../shared/festivals';
+// import { FESTIVALS } from '../shared/festivals';
+import { FestivalService } from '../services/festival.service';
+
 
 @Component({
   selector: 'app-festivals',
@@ -11,14 +13,15 @@ import { FESTIVALS } from '../shared/festivals';
 })
 export class FestivalsComponent implements OnInit {
 
-  festivals: Festival[] = FESTIVALS;
+  festivals: Festival[];
 
   selectedFestival: Festival;
 
-  constructor() {
+  constructor(private festivalService: FestivalService) {
   }
 
   ngOnInit() {
+    this.festivals = this.festivalService.getFestivals();
   }
   onSelect(festival: Festival) {
     this.selectedFestival = festival;

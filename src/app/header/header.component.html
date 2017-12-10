@@ -1,0 +1,45 @@
+<mat-toolbar color="primary">
+  <span><img src="/assets/img/logo.jpg" height=30 width=41></span>
+  <a mat-button routerLink="/home" routerLinkActive="active"><i class="material-icons">home</i>Home</a>
+  <a mat-button routerLink="/festivals" routerLinkActive="active"><i class="fa fa-lg fa-hand-peace-o"></i> Festivals</a>
+  <a mat-button routerLink="/order" routerLinkActive="active"><i class="fa fa-lg fa-ticket"></i> Order Ticket</a>
+  <a mat-button routerLink="/contact" routerLinkActive="active"><i class="fa fa-lg fa-handshake-o"></i> Contacts & more</a>
+
+  <span class="flex-spacer"></span>
+  <a mat-button (click) = "openLoginForm()"><span class="fa fa-sign-in fa-lg"></span>Login</a>
+</mat-toolbar>
+
+
+<div class="container jumbotron"
+     fxLayout="row"
+     fxLayout.sm="column"
+     fxLayout.xs="column"
+     fxLayoutAlign.xs="start center"
+     fxLayoutAlign.sm="start center"
+     fxLayoutAlign.gt-sm="center center"
+     fxLayoutGap="10px">
+
+  <div fxFlex fxFlex.gt-sm="50%">
+    <h1>Travel Bug Injection</h1>
+    <p>Want to choose where to go on holiday - use bug injection for that!</p>
+  </div>
+
+  <div fxFlex fxFlex.gt-sm="20%">
+    <img src="/assets/img/logo.jpg" height=100 width=100 alt="Logo">
+  </div>
+
+  <div fxFlex><i class="fa fa-search"></i></div>
+  <div fxFlex fxFlex.gt-sm="50%">
+    <form>
+      <mat-form-field class="search">
+        <input type="text" matInput placeholder="Choose the place you wanna go" [formControl]="myControl" [matAutocomplete]="auto">
+        <mat-autocomplete #auto="matAutocomplete">
+          <mat-option *ngFor="let festival of festivals" [routerLink]="['/festivaldetail', festival.id]">
+            {{ festival.name }}
+          </mat-option>
+        </mat-autocomplete>
+      </mat-form-field>
+    </form>
+  </div>
+</div>
+<!--<app-festivaldetail [festival] = "selectedFestival"></app-festivaldetail>-->

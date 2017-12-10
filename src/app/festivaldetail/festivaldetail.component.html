@@ -1,10 +1,10 @@
-<div class="container"
+<div class="festivaldetail_container"
      fxLayout="row"
      fxLayout.sm="column"
      fxLayout.xs="column"
      fxLayoutAlign.gt-md="space-around center"
      fxLayoutGap="10px"
-     fxLayoutGap.xs="0">
+     fxLayoutGap.xs="5px">
 
   <div fxFlex="40" *ngIf="festival">
     <mat-card>
@@ -19,6 +19,7 @@
       </mat-card-content>
       <mat-card-actions>
         <div class="button-row">
+          <button mat-button (click)="goBack()">BACK</button>
           <button mat-raised-button>LIKE</button>
           <button mat-fab color="primary">
             <mat-icon>share</mat-icon>
@@ -38,7 +39,7 @@
         <agm-marker [latitude]="festival.latitude" [longitude]="festival.longitude"></agm-marker>
       </agm-map>
       <h2>Share you comments or ...</h2>
-      <button mat-raised-button color="primary">...Book the hotel before travel</button>
+      <button mat-raised-button color="primary"><a href="https://www.hotels.com/?pos=HCOM_US&locale=en_US" target="_blank">...Book the hotel before travel</a></button>
       <mat-progress-bar mode="buffer" color="primary"></mat-progress-bar>
       <mat-card>
       <mat-card-content>

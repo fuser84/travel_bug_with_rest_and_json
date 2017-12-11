@@ -31,61 +31,67 @@
         </div>
       </div>
       <div fxFlex="40">
-        <h4>Map of our Location</h4>
+        <h4 class="animated infinite bounce">Map of our Location</h4>
         <agm-map [latitude]="lat" [longitude]="lng">
           <agm-marker [latitude]="lat" [longitude]="lng"></agm-marker>
         </agm-map>
       </div>
     </div>
   </div>
-  <div fxFlexOffset="50">
-      <h1>hellO!</h1>
-  </div>
-  <div fxFlex fxFlexOffset="20px" class="form-size">
-    <h3>Send us your Feedback</h3>
-    <p>{{ feedbackForm.value | json}} {{feedbackForm.status | json }}</p>
-    <mat-card>
-    <form novalidate [formGroup]="feedbackForm" (ngSubmit)="onSubmit()">
-      <p>
-        <mat-input-container class="half-width"  color="accent">
-          <input matInput formControlName="firstname" placeholder="First Name" type="text" required>
-        </mat-input-container>
-        <mat-input-container class="half-width" color="accent">
-          <input matInput formControlName="lastname" placeholder="Last Name" type="text" required>
-        </mat-input-container>
-        <mat-input-container class="half-width" color="accent">
-          <input matInput formControlName="telnum" placeholder="Tel. Number" type="tel" required>
-        </mat-input-container>
-        <mat-input-container class="half-width" color="accent">
-          <input matInput formControlName="email" placeholder="Email" type="email" required>
-        </mat-input-container>
-      </p>
-      <!--slide toggler-->
-      <div fxLayout="row">
-        <div fxFlex>
-          <mat-slide-toggle formControlName="agree">May we contact you</mat-slide-toggle>
-        </div>
-        <div fxFlex>
-          <mat-form-field color="accent">
-            <mat-select placeholder="How?" formControlName="contacttype">
-              <mat-option *ngFor="let ctype of contactType" [value]="ctype">
-                {{ ctype }}
-              </mat-option>
-            </mat-select>
-          </mat-form-field>
-        </div>
-      </div>
-      <p>
-        <mat-input-container class="full-width" color="accent">
-          <textarea matInput formControlName="message" placeholder="Your Feedback" rows=12></textarea>
-        </mat-input-container>
 
-      </p>
-      <div fxLayoutAlign="end">
-        <!--<span class="flex-spacer"></span>-->
-        <button type="submit" mat-raised-button class="text-floral-white">Submit</button>
+  <div fxFlex>
+    <h3>Send us your Feedback</h3>
+    <!--<p>{{feedbackForm.value | json}} {{feedbackForm.status | json }}</p>-->
+    <div fxLayout="column" fxLayout.gt-sm="row">
+      <div fxFlex="50" fxFlexOffset="20px">
+        <mat-card>
+          <form novalidate [formGroup]="feedbackForm" (ngSubmit)="onSubmit()">
+            <p>
+              <mat-input-container class="half-width" color="accent">
+                <input matInput formControlName="firstname" placeholder="First Name" type="text" required>
+              </mat-input-container>
+              <mat-input-container class="half-width" color="accent">
+                <input matInput formControlName="lastname" placeholder="Last Name" type="text" required>
+              </mat-input-container>
+              <mat-input-container class="half-width" color="accent">
+                <input matInput formControlName="telnum" placeholder="Tel. Number" type="tel" required>
+              </mat-input-container>
+              <mat-input-container class="half-width" color="accent">
+                <input matInput formControlName="email" placeholder="Email" type="email" required>
+              </mat-input-container>
+            </p>
+            <!--slide toggler-->
+            <div fxLayout="row">
+              <div fxFlex>
+                <mat-slide-toggle formControlName="agree">May we contact you</mat-slide-toggle>
+              </div>
+              <div fxFlex>
+                <mat-form-field color="accent">
+                  <mat-select placeholder="How?" formControlName="contacttype">
+                    <mat-option *ngFor="let ctype of contactType" [value]="ctype">
+                      {{ ctype }}
+                    </mat-option>
+                  </mat-select>
+                </mat-form-field>
+              </div>
+            </div>
+            <p>
+              <mat-input-container class="full-width" color="accent">
+                <textarea matInput formControlName="message" placeholder="Your Feedback" rows=12></textarea>
+              </mat-input-container>
+
+            </p>
+            <div fxLayoutAlign="end">
+              <!--<span class="flex-spacer"></span>-->
+              <button type="submit" mat-raised-button class="text-floral-white">Submit</button>
+            </div>
+          </form>
+        </mat-card>
       </div>
-    </form>
-    </mat-card>
+      <div fxFlex fxFlexOffset="5">
+        <h1>hellO!</h1>
+      </div>
+    </div>
   </div>
+
 </div>

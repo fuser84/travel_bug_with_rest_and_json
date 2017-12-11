@@ -17,6 +17,7 @@ export class OrderComponent implements OnInit {
   specific_price = 0;
   arr = {};
 
+  user = {};
 
   constructor(private festivalservice: FestivalService) {
   }
@@ -50,6 +51,10 @@ export class OrderComponent implements OnInit {
     this.arr[name] = param;
     this.specific_price += param;
 
+  }
+
+  onSubmit() {
+  console.log(`User:`, this.user);
   }
 
 }

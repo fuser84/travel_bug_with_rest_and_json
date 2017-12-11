@@ -14,6 +14,10 @@
       <div fxFlex="50">
         <h2>Order Form:</h2>
 
+        <!--debug proposes-->
+        <!--<p>{{user | json }}</p>-->
+
+        <form novalidate #loginForm="ngForm" (ngSubmit)="onSubmit()">
         <mat-accordion class="headers-align">
           <mat-expansion-panel [expanded]="step === 0" (opened)="setStep(0)" hideToggle="true">
             <mat-expansion-panel-header>
@@ -26,10 +30,22 @@
               <mat-icon>account_circle</mat-icon>
             </mat-expansion-panel-header>
             <mat-form-field color="accent">
-              <input matInput placeholder="First name">
+              <input matInput placeholder="First name" type="text" name="firstname" [(ngModel)]="user.firstname"
+                     #firstname="ngModel" required>
+              <mat-hint>
+        <span [hidden]="firstname.pristine">
+          <span [hidden]="!firstname.errors?.required">firstname is required</span>
+        </span>
+              </mat-hint>
             </mat-form-field>
             <mat-form-field color="accent">
-              <input matInput placeholder="Last name">
+              <input matInput placeholder="Last name" type="text" name="lastname" [(ngModel)]="user.lastname"
+                     #lastname="ngModel"  required>
+              <mat-hint>
+            <span [hidden]="lastname.pristine">
+              <span [hidden]="!lastname.errors?.required">lastname is required</span>
+              </span>
+              </mat-hint>
             </mat-form-field>
             <mat-action-row>
               <button mat-raised-button color="accent" (click)="nextStep()">Next</button>
@@ -46,7 +62,8 @@
               <mat-icon>map</mat-icon>
             </mat-expansion-panel-header>
             <mat-form-field color="accent">
-              <mat-select placeholder="Fest" [formControl]="fests" multiple>
+              <mat-select placeholder="Fest" [formControl]="fests"
+                          multiple name="fest" [(ngModel)]="user.fest" type="text" required>
                 <mat-select-trigger>
                   {{fests.value ? fests.value[0] : ''}}
                   <span *ngIf="fests.value?.length > 1">
@@ -54,7 +71,8 @@
                  </span>
                 </mat-select-trigger>
                 <mat-action-row><span><h2>--Price is {{specific_price}}$</h2></span></mat-action-row>
-                <mat-option *ngFor="let fest of festList" [value]="fest.name"  (click)="getPrice(fest.attendance_price, fest.name)">{{fest.name}}</mat-option>
+                <mat-option *ngFor="let fest of festList" [value]="fest.name"  (click)="getPrice(fest.attendance_price,
+                fest.name)">{{fest.name}}</mat-option>
               </mat-select>
             </mat-form-field>
             <mat-action-row>
@@ -73,15 +91,18 @@
               <mat-icon>date_range</mat-icon>
             </mat-expansion-panel-header>
             <mat-form-field>
-              <input matInput  placeholder="Date" [matDatepicker]="picker" (focus)="picker.open()" readonly>
+              <input matInput  placeholder="Date" [matDatepicker]="picker" (focus)="picker.open()" readonly
+                     type="text" name="date" [(ngModel)]="user.date" required>
             </mat-form-field>
             <mat-datepicker #picker></mat-datepicker>
             <mat-action-row>
               <button mat-raised-button color="warn" (click)="prevStep()">Previous</button>
-              <button mat-raised-button color="accent" (click)="nextStep()">End</button>
+              <button type="submit" mat-raised-button color="accent" (click)="nextStep()"
+                      [disabled]="loginForm.form.invalid" >End</button>
             </mat-action-row>
           </mat-expansion-panel>
         </mat-accordion>
+      </form>
       </div>
       <div fxFlex="50">
         <mat-card>

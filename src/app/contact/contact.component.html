@@ -49,15 +49,31 @@
             <p>
               <mat-input-container class="half-width" color="accent">
                 <input matInput formControlName="firstname" placeholder="First Name" type="text" required>
+                <mat-hint>
+                  <span [hidden]="!(feedbackForm.get('firstname').hasError('required')
+                  && feedbackForm.get('firstname').touched)">firstname is required</span>
+                </mat-hint>
               </mat-input-container>
               <mat-input-container class="half-width" color="accent">
                 <input matInput formControlName="lastname" placeholder="Last Name" type="text" required>
+                <mat-hint>
+                  <span [hidden]="!(feedbackForm.get('lastname').hasError('required')
+                  && feedbackForm.get('lastname').touched)">lastname is required</span>
+                </mat-hint>
               </mat-input-container>
               <mat-input-container class="half-width" color="accent">
                 <input matInput formControlName="telnum" placeholder="Tel. Number" type="tel" required>
+                <mat-hint>
+                  <span [hidden]="!(feedbackForm.get('telnum').hasError('required')
+                  && feedbackForm.get('telnum').touched)">telnum is required</span>
+                </mat-hint>
               </mat-input-container>
               <mat-input-container class="half-width" color="accent">
                 <input matInput formControlName="email" placeholder="Email" type="email" required>
+                <mat-hint>
+                  <span [hidden]="!(feedbackForm.get('email').hasError('required')
+                  && feedbackForm.get('email').touched)">email is required</span>
+                </mat-hint>
               </mat-input-container>
             </p>
             <!--slide toggler-->
@@ -83,7 +99,8 @@
             </p>
             <div fxLayoutAlign="end">
               <!--<span class="flex-spacer"></span>-->
-              <button type="submit" mat-raised-button class="text-floral-white">Submit</button>
+              <button type="submit" mat-raised-button class="text-floral-white"
+              [disabled]="feedbackForm.invalid">Submit</button>
             </div>
           </form>
         </mat-card>

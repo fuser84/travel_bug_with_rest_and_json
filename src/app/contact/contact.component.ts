@@ -1,6 +1,9 @@
 import { Component, OnInit } from '@angular/core';
 import { FormBuilder, FormGroup, Validators} from '@angular/forms';
 import { Feedback, ContactType} from '../shared/feedback';
+
+
+// add modules to manipulate DOM
 import { AfterViewInit, ElementRef} from '@angular/core';
 
 @Component({
@@ -25,26 +28,40 @@ export class ContactComponent implements OnInit, AfterViewInit {
   }
   ngOnInit() {
   }
-
+// method for DOM manipulation
   ngAfterViewInit() {
-    this.elementRef.nativeElement.querySelector('h1').addEventListener('click', this.onClick.bind(this));
+    this.elementRef.nativeElement.querySelector('h1').addEventListener('click', this.onClickHeading.bind(this));
+    this.elementRef.nativeElement.querySelector('#bug').addEventListener('click', this.onClickBug.bind(this));
   }
-  onClick(e) {
+
+  onClickHeading(e) {
+    // debugger;
     if (e.target.classList.contains('animated')) {
-      return  e.target.classList.remove('animated', 'bounce');
-      // setTimeout(() => {e.target.classList.add('animated', 'bounce'); }, 10000);
+      e.target.classList.remove('animated', 'tada');
+      setTimeout(() => {e.target.classList.add('animated', 'tada'); }, 1);
+    }else {
+      e.target.classList.add('animated', 'tada');
     }
-    e.target.classList.add('animated', 'bounce');
-    // e.target.classList.remove('animated', 'bounce');
+    console.log(e);
+  }
+
+  onClickBug(e) {
+    // debugger;
+    if (e.target.classList.contains('animated')) {
+      e.target.classList.remove('animated', 'flip');
+      setTimeout(() => {e.target.classList.add('animated', 'flip'); }, 1);
+    }else {
+      e.target.classList.add('animated', 'flip');
+    }
     console.log(e);
   }
 
   createForm() {
     this.feedbackForm = this.fb.group({
-      firstname: '',
-      lastname: '',
-      telnum: 0,
-      email: '',
+      firstname: ['', Validators.required],
+      lastname: ['', Validators.required],
+      telnum: [0, Validators.required],
+      email: ['', Validators.required],
       agree: false,
       contacttype: 'None',
       message: ''

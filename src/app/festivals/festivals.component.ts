@@ -21,7 +21,8 @@ export class FestivalsComponent implements OnInit {
   }
 
   ngOnInit() {
-    this.festivals = this.festivalService.getFestivals();
+     this.festivalService.getFestivals()
+      .then(festivals => this.festivals = festivals);
   }
   onSelect(festival: Festival) {
     this.selectedFestival = festival;

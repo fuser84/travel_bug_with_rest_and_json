@@ -23,7 +23,8 @@ export class HeaderComponent implements OnInit {
               private dialog: MatDialog) { }
 
   ngOnInit() {
-    this.festivals = this.festivalService.getFestivals();
+    this.festivalService.getFestivals()
+      .then(festivals => this.festivals = festivals);
   }
 
   onSelect(festival: Festival ) {

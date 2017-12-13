@@ -15,9 +15,14 @@ export class HomeComponent implements OnInit {
   constructor(private promotionservice: PromotionService) { }
 
   ngOnInit() {
-    this.metalPromotion = this.promotionservice.getUpcomingMetalPromotion();
-    this.drumPromotion = this.promotionservice.getUpcomingDrumPromotion();
-    this.indiePromotion = this.promotionservice.getUpcomingIndiePromotion();
+    this.promotionservice.getUpcomingMetalPromotion()
+      .then(metalPromotion => this.metalPromotion = metalPromotion);
+
+    this.promotionservice.getUpcomingDrumPromotion()
+      .then(drumPromotion => this.drumPromotion = drumPromotion);
+
+    this.promotionservice.getUpcomingIndiePromotion()
+      .then(indiePromotion => this.indiePromotion = indiePromotion);
   }
 
 }

@@ -25,7 +25,8 @@ export class FestivaldetailComponent implements OnInit {
   ngOnInit() {
     // fetch info from the params
     let id = +this.route.snapshot.params['id'];
-    this.festival = this.festivalservice.getFestival(id);
+    this.festivalservice.getFestival(id)
+      .then(festival => this.festival = festival);
   }
 
   goBack(): void {

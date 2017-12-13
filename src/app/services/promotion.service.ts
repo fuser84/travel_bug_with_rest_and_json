@@ -7,23 +7,23 @@ export class PromotionService {
 
   constructor() { }
 
-  getPromotions(): Promotion[] {
-    return PROMOTIONS;
+  getPromotions(): Promise<Promotion[]> {
+    return Promise.resolve(PROMOTIONS);
   }
 
-  getPromotion(id: number): Promotion {
-    return PROMOTIONS.filter(promo => promo.id === id)[0];
+  getPromotion(id: number): Promise<Promotion> {
+    return Promise.resolve(PROMOTIONS.filter(promo => promo.id === id)[0]);
   }
 
-  getUpcomingMetalPromotion(): Promotion {
-    return PROMOTIONS.filter(promo => promo.upcoming)[0];
+  getUpcomingMetalPromotion(): Promise<Promotion> {
+    return Promise.resolve(PROMOTIONS.filter(promo => promo.upcoming)[0]);
   }
 
-  getUpcomingDrumPromotion(): Promotion {
-    return PROMOTIONS.filter(promo => promo.upcoming)[1];
+  getUpcomingDrumPromotion(): Promise<Promotion> {
+    return Promise.resolve(PROMOTIONS.filter(promo => promo.upcoming)[1]);
   }
-  getUpcomingIndiePromotion(): Promotion {
-    return PROMOTIONS.filter(promo => promo.upcoming)[2];
+  getUpcomingIndiePromotion(): Promise <Promotion> {
+    return Promise.resolve(PROMOTIONS.filter(promo => promo.upcoming)[2]);
   }
 
 

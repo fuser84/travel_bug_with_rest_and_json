@@ -23,8 +23,11 @@ export class OrderComponent implements OnInit {
   }
 
   ngOnInit() {
-    this.festList = this.festivalservice.getFestivals();
-    this.prices = this.festivalservice.getFestivalPrices();
+    this.festivalservice.getFestivals()
+      .then(festList => this.festList = festList);
+
+    this.festivalservice.getFestivalPrices()
+      .then(prices => this.prices = prices);
   }
 
   setStep(index: number) {

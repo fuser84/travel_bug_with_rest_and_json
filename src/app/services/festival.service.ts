@@ -8,20 +8,21 @@ export class FestivalService {
   constructor() {
   }
 
-  getFestivals(): Festival[] {
-    return FESTIVALS;
+  getFestivals(): Promise<Festival[]> {
+    // return FESTIVALS;
+    return Promise.resolve(FESTIVALS);
   }
 
-  getFestival(id: number): Festival {
-    return FESTIVALS.filter(festival => festival.id === id)[0];
+  getFestival(id: number): Promise<Festival> {
+    return Promise.resolve(FESTIVALS.filter(festival => festival.id === id)[0]);
   }
 
-  getFeaturedFestival(): Festival {
-    return FESTIVALS.filter(festival => festival.featured)[0];
+  getFeaturedFestival(): Promise<Festival> {
+    return Promise.resolve(FESTIVALS.filter(festival => festival.featured)[0]);
   }
 
-  getFestivalPrices(): Festival[] {
-    return FESTIVALS.filter(prices => prices.attendance_price);
+  getFestivalPrices(): Promise<Festival[]> {
+    return Promise.resolve(FESTIVALS.filter(prices => prices.attendance_price));
   }
 
 }

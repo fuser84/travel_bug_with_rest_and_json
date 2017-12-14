@@ -1,5 +1,3 @@
-
-
 <div>
   <div fxLayout="row"
        fxLayout.sm="column"
@@ -7,8 +5,8 @@
        fxLayoutAlign.gt-md="space-around center"
        fxLayoutGap="5px"
        parallax [config]="{
-parallaxInitVal: 50,
-parallaxRatio: .26
+        parallaxInitVal: 50,
+        parallaxRatio: .26
 }" id="first-example">
   </div>
   <h2>Upcoming Festivals</h2>
@@ -33,6 +31,9 @@ parallaxRatio: .26
         </p>
       </mat-card-content>
     </mat-card>
+    <div [hidden]="metalPromotion">
+      <mat-spinner></mat-spinner><h4>Loading...Please wait</h4>
+    </div>
 
     <mat-card *ngIf="drumPromotion" fxFlex>
       <mat-card-header>
@@ -46,6 +47,9 @@ parallaxRatio: .26
         <p>{{drumPromotion.description}}</p>
       </mat-card-content>
     </mat-card>
+    <div [hidden]="drumPromotion">
+      <mat-spinner></mat-spinner><h4>Loading...Please wait</h4>
+    </div>
 
     <mat-card *ngIf="indiePromotion" fxFlex>
       <mat-card-header>
@@ -59,6 +63,9 @@ parallaxRatio: .26
         <p>{{indiePromotion.description}}</p>
       </mat-card-content>
     </mat-card>
+    <div [hidden]="indiePromotion">
+        <mat-spinner></mat-spinner><h4>Loading...Please wait</h4>
+      </div>
   </div>
   <div fxLayout="row"
        fxLayout.sm="column"

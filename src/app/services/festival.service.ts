@@ -10,19 +10,28 @@ export class FestivalService {
 
   getFestivals(): Promise<Festival[]> {
     // return FESTIVALS;
-    return Promise.resolve(FESTIVALS);
+    return new Promise (resolve => {
+      // simulate server latency with 2 second delay
+      setTimeout ( () => resolve(FESTIVALS), 2000);
+    });
   }
 
   getFestival(id: number): Promise<Festival> {
-    return Promise.resolve(FESTIVALS.filter(festival => festival.id === id)[0]);
+    return new Promise( resolve => {
+      setTimeout(() => resolve(FESTIVALS.filter(festival => festival.id === id)[0]), 2000);
+    });
   }
 
   getFeaturedFestival(): Promise<Festival> {
-    return Promise.resolve(FESTIVALS.filter(festival => festival.featured)[0]);
+    return new Promise (resolve => {
+      setTimeout(() => resolve(FESTIVALS.filter(festival => festival.featured)[0]), 2000);
+    });
   }
 
   getFestivalPrices(): Promise<Festival[]> {
-    return Promise.resolve(FESTIVALS.filter(prices => prices.attendance_price));
+    return new Promise(resolve => {
+      setTimeout(() => resolve(FESTIVALS.filter(prices => prices.attendance_price)), 2000);
+    });
   }
 
 }

@@ -9,7 +9,7 @@
     </div>
   </div>
 
-  <div fxFlex>
+  <div fxFlex *ngIf="festivals">
   <!--fxflex defines one flex unit-->
   <mat-grid-list cols="2" rowHeight="400px">
     <mat-grid-tile *ngFor="let festival of festivals" [routerLink]="['/festivaldetail', festival.id]">
@@ -19,6 +19,9 @@
       </mat-grid-tile-footer>
     </mat-grid-tile>
   </mat-grid-list>
+  </div>
+  <div [hidden]="festivals">
+    <mat-spinner></mat-spinner> <h4>Loading ...Please wait</h4>
   </div>
 </div>
 

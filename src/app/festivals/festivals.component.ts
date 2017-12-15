@@ -6,6 +6,7 @@ import {CommentLink} from '../shared/commentLink';
 import { FestivalService } from '../services/festival.service';
 
 
+
 @Component({
   selector: 'app-festivals',
   templateUrl: './festivals.component.html',
@@ -22,7 +23,7 @@ export class FestivalsComponent implements OnInit {
 
   ngOnInit() {
      this.festivalService.getFestivals()
-      .then(festivals => this.festivals = festivals);
+      .subscribe(festivals => this.festivals = festivals);
   }
   onSelect(festival: Festival) {
     this.selectedFestival = festival;

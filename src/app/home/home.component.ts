@@ -16,13 +16,13 @@ export class HomeComponent implements OnInit {
 
   ngOnInit() {
     this.promotionservice.getUpcomingMetalPromotion()
-      .then(metalPromotion => this.metalPromotion = metalPromotion);
+      .subscribe(metalPromotion => this.metalPromotion = metalPromotion);
 
     this.promotionservice.getUpcomingDrumPromotion()
-      .then(drumPromotion => this.drumPromotion = drumPromotion);
+      .subscribe(drumPromotion => this.drumPromotion = drumPromotion);
 
     this.promotionservice.getUpcomingIndiePromotion()
-      .then(indiePromotion => this.indiePromotion = indiePromotion);
+      .subscribe(indiePromotion => this.indiePromotion = indiePromotion);
   }
 
 }

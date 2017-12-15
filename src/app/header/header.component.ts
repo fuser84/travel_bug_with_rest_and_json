@@ -24,7 +24,7 @@ export class HeaderComponent implements OnInit {
 
   ngOnInit() {
     this.festivalService.getFestivals()
-      .then(festivals => this.festivals = festivals);
+      .subscribe(festivals => this.festivals = festivals);
   }
 
   onSelect(festival: Festival ) {

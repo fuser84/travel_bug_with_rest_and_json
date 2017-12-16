@@ -65,4 +65,8 @@ export class FestivalService {
     return Observable.of(FESTIVALS.filter(prices => prices.attendance_price)).delay(2000);
   }
 
+  getFestivalIds(): Observable<number[]> {
+    return Observable.of(FESTIVALS.map(festival => festival.id)).delay(2000);
+  }
+
 }

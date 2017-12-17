@@ -8,8 +8,12 @@ import {
   MatButtonModule, MatCheckboxModule, MatDatepickerModule, MatFormFieldModule,
   MatInputModule, MatRadioModule, MatSelectModule, MatSliderModule,
   MatSlideToggleModule, MatToolbarModule, MatListModule, MatGridListModule,
-  MatCardModule, MatIconModule, MatProgressSpinnerModule, MatDialogModule, MatTableModule, MatProgressBarModule
+  MatCardModule, MatIconModule, MatProgressSpinnerModule, MatDialogModule, MatTableModule, MatProgressBarModule,
 } from '@angular/material';
+
+import {MatTooltipModule} from '@angular/material/tooltip';
+
+import {MatSnackBarModule} from '@angular/material';
 
 import {MatExpansionModule} from '@angular/material/expansion';
 import { MatNativeDateModule } from '@angular/material';
@@ -28,13 +32,14 @@ import { HomeComponent } from './home/home.component';
 import { OrderComponent } from './order/order.component';
 import { ContactComponent } from './contact/contact.component';
 
+
+
 import { FestivalService } from './services/festival.service';
 import { PromotionService } from './services/promotion.service';
 
 
 import { AppRoutingModule } from './app-routing/app-routing.module';
 import { LoginComponent } from './login/login.component';
-
 
 
 
@@ -49,7 +54,8 @@ import { LoginComponent } from './login/login.component';
     OrderComponent,
     ContactComponent,
     Parallax,
-    LoginComponent
+    LoginComponent,
+
   ],
   imports: [
     BrowserModule,
@@ -61,12 +67,13 @@ import { LoginComponent } from './login/login.component';
     MatInputModule, MatRadioModule, MatSelectModule, MatSliderModule,
     MatSlideToggleModule, MatToolbarModule, MatListModule, MatGridListModule,
     MatCardModule, MatIconModule, MatProgressSpinnerModule, MatDialogModule, MatTableModule, MatProgressBarModule,
-    ReactiveFormsModule, MatAutocompleteModule, AppRoutingModule, MatExpansionModule, MatNativeDateModule,
+    ReactiveFormsModule, MatAutocompleteModule, AppRoutingModule, MatExpansionModule, MatSnackBarModule, MatNativeDateModule,
+    MatTooltipModule,
     AgmCoreModule.forRoot({
       apiKey: 'AIzaSyDvSlqnrDrDU0FGtNYHjOAULFhxvZB515Y'
     })
   ],
-  providers: [ FestivalService, PromotionService ],
+  providers: [ FestivalService, PromotionService],
   entryComponents: [
     LoginComponent
   ],

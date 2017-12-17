@@ -23,11 +23,8 @@
             <span class="fa fa-chevron-left fa-lg"></span>
           </button>
           <button mat-button (click)="goBack()">BACK</button>
-          <button mat-raised-button>LIKE</button>
-          <button mat-fab color="primary">
-            <mat-icon>share</mat-icon>
-          </button>
-          <button mat-fab color="warn">
+          <button mat-raised-button (click)="openSnackBar()">LIKE</button>
+          <button (click)="openSnackBar2()" mat-fab color="warn" matTooltip="Add this festival to the favorites...">
             <mat-icon>favorite border</mat-icon>
           </button>
           <span class="flex-spacer"></span>

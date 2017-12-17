@@ -9,7 +9,11 @@ import {FestivalService} from '../services/festival.service';
 import {FormBuilder, FormGroup, Validator, Validators} from '@angular/forms';
 import {CommentLink} from '../shared/commentLink';
 
+import {MatSnackBar} from '@angular/material';
+
 import 'rxjs/add/operator/switchMap';
+
+
 
 @Component({
   selector: 'app-festivaldetail',
@@ -45,7 +49,8 @@ export class FestivaldetailComponent implements OnInit {
   constructor(private festivalservice: FestivalService,
               private route: ActivatedRoute,
               private location: Location,
-              private fb: FormBuilder) {
+              private fb: FormBuilder,
+              public snackBar: MatSnackBar) {
     this.createForm();
   }
 
@@ -119,4 +124,17 @@ export class FestivaldetailComponent implements OnInit {
       comment: ''
     });
   }
+
+openSnackBar() {
+  this.snackBar.open(`Festival has been liked!`, `OK!`,  {
+    duration: 2000
+  });
+}
+
+  openSnackBar2() {
+    this.snackBar.open(`Added to the favorites!`, `OK!`,  {
+      duration: 2000
+    });
+  }
+
 }

@@ -1,4 +1,4 @@
-import {Component, OnInit, Input} from '@angular/core';
+import {Component, OnInit, Inject} from '@angular/core';
 import {Festival} from '../shared/festival';
 // two imports below enable routing by id between festival details
 import {Params, ActivatedRoute} from '@angular/router';
@@ -50,7 +50,8 @@ export class FestivaldetailComponent implements OnInit {
               private route: ActivatedRoute,
               private location: Location,
               private fb: FormBuilder,
-              public snackBar: MatSnackBar) {
+              public snackBar: MatSnackBar,
+              @Inject('BaseURL') private BaseURL ) {
     this.createForm();
   }
 

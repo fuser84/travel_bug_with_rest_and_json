@@ -1,6 +1,10 @@
 import {Injectable} from '@angular/core';
 import {Festival} from '../shared/festival';
-import {FESTIVALS} from '../shared/festivals';
+// import {FESTIVALS} from '../shared/festivals'; not needed in case http or rest
+import { Http, Response } from '@angular/http';
+import { baseURL } from '../shared/baseurl';
+import { ProcessHttpmsgService } from './process-httpmsg.service';
+
 // using RxJS
 import {Observable} from 'rxjs/Observable';
 // import 'rxjs/add/operator/toPromise';
@@ -13,7 +17,8 @@ import 'rxjs/add/operator/delay';
 @Injectable()
 export class FestivalService {
 
-  constructor() {
+  constructor(private http: Http,
+              private processHTTPMsgService: ProcessHttpmsgService) {
   }
 // <---Promise approach--->
 //   getFestivals(): Promise<Festival[]> {
@@ -23,9 +28,10 @@ export class FestivalService {
 //     });
 //   }
 
-  // <---RxJS approach-->
+  // <---Http approach-->
   getFestivals(): Observable<Festival[]> {
-    return Observable.of(FESTIVALS).delay(2000);
+    return this.http.get(baseURL + 'festivals')
+      .map(res  =>  this.processHTTPMsgService.extractData(res) );
   }
 
   // <--Promise approach-->
@@ -35,9 +41,10 @@ export class FestivalService {
   //   });
   // }
 
-  // <--RxJS--> approach
+  // <--Http--> approach
   getFestival(id: number): Observable<Festival> {
-    return Observable.of(FESTIVALS.filter(festival => festival.id === id)[0]).delay (2000);
+    return this.http.get(baseURL + 'festivals/' + id)
+      .map(res  =>  this.processHTTPMsgService.extractData(res));
   }
 
   // <--Promise approach -->
@@ -47,9 +54,10 @@ export class FestivalService {
   //   });
   // }
 
-  // <-- RxJS approach -->
+  // <-- Http approach -->
   getFeaturedFestival(): Observable<Festival> {
-    return Observable.of(FESTIVALS.filter(festival => festival.featured)[0]).delay (2000);
+    return this.http.get(baseURL + 'dishes?featured=true')
+      .map(res  =>  this.processHTTPMsgService.extractData(res)[0]);
   }
 
 
@@ -60,13 +68,15 @@ export class FestivalService {
   //   });
   // }
 
-  // <--RxJS approach -->
-  getFestivalPrices(): Observable<Festival[]> {
-    return Observable.of(FESTIVALS.filter(prices => prices.attendance_price)).delay(2000);
+  // <--Http approach -->
+  getFestivalPrices(): Observable<number[]> {
+    return this.getFestivals()
+      .map(festivals => festivals.map(festival => festival.attendance_price));
   }
 
   getFestivalIds(): Observable<number[]> {
-    return Observable.of(FESTIVALS.map(festival => festival.id)).delay(2000);
+    return this.getFestivals()
+      .map(festivals => festivals.map(festival => festival.id));
   }
 
 }

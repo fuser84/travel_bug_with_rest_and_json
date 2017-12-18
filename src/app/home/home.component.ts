@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, Inject } from '@angular/core';
 import { Promotion } from '../shared/promotion';
 import { PromotionService } from '../services/promotion.service';
 
@@ -12,7 +12,8 @@ export class HomeComponent implements OnInit {
   drumPromotion: Promotion;
   indiePromotion: Promotion;
 
-  constructor(private promotionservice: PromotionService) { }
+  constructor(private promotionservice: PromotionService,
+              @Inject('BaseURL') private BaseURL) { }
 
   ngOnInit() {
     this.promotionservice.getUpcomingMetalPromotion()

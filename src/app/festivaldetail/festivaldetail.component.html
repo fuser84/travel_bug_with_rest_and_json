@@ -13,7 +13,7 @@
           <h3>{{ festival.name | uppercase }}</h3>
         </mat-card-title>
       </mat-card-header>
-      <img mat-card-image src="{{festival.image}}" alt="{{festival.name}}">
+      <img mat-card-image src="{{ BaseURL + festival.image}}" alt="{{festival.name}}">
       <mat-card-content>
         <p> {{festival.description}}</p>
       </mat-card-content>

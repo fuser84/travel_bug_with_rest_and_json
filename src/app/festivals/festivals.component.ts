@@ -1,9 +1,10 @@
-import {Component, OnInit} from '@angular/core';
+import {Component, OnInit, Inject} from '@angular/core';
 
 import {Festival} from '../shared/festival';
 import {CommentLink} from '../shared/commentLink';
 // import { FESTIVALS } from '../shared/festivals';
 import { FestivalService } from '../services/festival.service';
+
 
 
 
@@ -16,17 +17,14 @@ export class FestivalsComponent implements OnInit {
 
   festivals: Festival[];
 
-  selectedFestival: Festival;
 
-  constructor(private festivalService: FestivalService) {
+  constructor(private festivalService: FestivalService,
+              @Inject('BaseURL') private BaseURL) {
   }
 
   ngOnInit() {
      this.festivalService.getFestivals()
       .subscribe(festivals => this.festivals = festivals);
-  }
-  onSelect(festival: Festival) {
-    this.selectedFestival = festival;
   }
 
 }

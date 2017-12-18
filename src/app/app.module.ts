@@ -41,6 +41,8 @@ import { PromotionService } from './services/promotion.service';
 import { AppRoutingModule } from './app-routing/app-routing.module';
 import { LoginComponent } from './login/login.component';
 
+import { baseURL } from './shared/baseurl';
+import { ProcessHttpmsgService} from './services/process-httpmsg.service';
 
 
 @NgModule({
@@ -73,7 +75,8 @@ import { LoginComponent } from './login/login.component';
       apiKey: 'AIzaSyDvSlqnrDrDU0FGtNYHjOAULFhxvZB515Y'
     })
   ],
-  providers: [ FestivalService, PromotionService],
+  providers: [ FestivalService, PromotionService, ProcessHttpmsgService,
+    {provide: 'BaseURL', useValue: baseURL }],
   entryComponents: [
     LoginComponent
   ],

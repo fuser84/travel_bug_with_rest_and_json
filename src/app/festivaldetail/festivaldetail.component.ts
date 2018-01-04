@@ -13,11 +13,26 @@ import {MatSnackBar} from '@angular/material';
 
 import 'rxjs/add/operator/switchMap';
 
+import { trigger, state, style, animate, transition } from '@angular/animations';
+
 
 @Component({
   selector: 'app-festivaldetail',
   templateUrl: './festivaldetail.component.html',
-  styleUrls: ['./festivaldetail.component.scss']
+  styleUrls: ['./festivaldetail.component.scss'],
+  animations: [
+    trigger('visibility', [
+      state('shown', style({
+        transform: 'scale(1.0)',
+        opacity: 1
+      })),
+      state('hidden', style({
+        transform: 'scale(0.5)',
+        opacity: 0
+      })),
+      transition('* => *', animate('0.5s ease-in-out'))
+    ])
+  ]
 })
 export class FestivaldetailComponent implements OnInit {
   // fetch info from another component using Input
@@ -28,6 +43,7 @@ export class FestivaldetailComponent implements OnInit {
   prev: number;
   next: number;
   errMess: string;
+  visibility = 'shown';
 
   submitForm: FormGroup;
   comment: CommentLink;
@@ -61,11 +77,12 @@ export class FestivaldetailComponent implements OnInit {
       .subscribe(festivalIds => this.festivalIds = festivalIds, errmess => this.errMess = <any>errmess);
     // fetch info from the params
     this.route.params
-      .switchMap((params: Params) => this.festivalservice.getFestival(+params['id']))
+      .switchMap((params: Params) => { this.visibility = 'hidden'; return this.festivalservice.getFestival(+params['id']); })
       .subscribe(festival => {
         this.festival = festival;
         this.festivalcopy = festival;
         this.setPrevNext(festival.id);
+        this.visibility = 'shown';
       }, errmess => this.errMess = <any>errmess);
   }
 

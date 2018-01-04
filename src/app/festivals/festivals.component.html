@@ -12,7 +12,7 @@
   <div fxFlex *ngIf="festivals">
   <!--fxflex defines one flex unit-->
   <mat-grid-list cols="2" rowHeight="400px">
-    <mat-grid-tile *ngFor="let festival of festivals" [routerLink]="['/festivaldetail', festival.id]">
+    <mat-grid-tile *ngFor="let festival of festivals" [routerLink]="['/festivaldetail', festival.id]" appHighlight>
       <img height="350px" src="{{BaseURL + festival.image}}" alt={{festival.name}}>
       <mat-grid-tile-footer>
         <h1 mat-line>{{festival.name | uppercase}}</h1>

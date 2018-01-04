@@ -14,7 +14,6 @@ import {MatSnackBar} from '@angular/material';
 import 'rxjs/add/operator/switchMap';
 
 
-
 @Component({
   selector: 'app-festivaldetail',
   templateUrl: './festivaldetail.component.html',
@@ -24,6 +23,7 @@ export class FestivaldetailComponent implements OnInit {
   // fetch info from another component using Input
   // @Input()
   festival: Festival;
+  festivalcopy = null;
   festivalIds: number[];
   prev: number;
   next: number;
@@ -52,7 +52,7 @@ export class FestivaldetailComponent implements OnInit {
               private location: Location,
               private fb: FormBuilder,
               public snackBar: MatSnackBar,
-              @Inject('BaseURL') private BaseURL ) {
+              @Inject('BaseURL') private BaseURL) {
     this.createForm();
   }
 
@@ -64,8 +64,9 @@ export class FestivaldetailComponent implements OnInit {
       .switchMap((params: Params) => this.festivalservice.getFestival(+params['id']))
       .subscribe(festival => {
         this.festival = festival;
+        this.festivalcopy = festival;
         this.setPrevNext(festival.id);
-      });
+      }, errmess => this.errMess = <any>errmess);
   }
 
   setPrevNext(festivalId: number) {
@@ -118,7 +119,9 @@ export class FestivaldetailComponent implements OnInit {
     let date = new Date().toISOString();
     this.submitForm.value.date = date;
     this.comment = this.submitForm.value;
-    this.festival.comments.push(this.comment);
+    this.festivalcopy.comments.push(this.comment);
+    this.festivalcopy.save()
+      .subscribe(festival => this.festival = festival);
     console.log(this.comment);
     this.submitForm.reset({
       author: '',
@@ -127,14 +130,14 @@ export class FestivaldetailComponent implements OnInit {
     });
   }
 
-openSnackBar() {
-  this.snackBar.open(`Festival has been liked!`, `OK!`,  {
-    duration: 2000
-  });
-}
+  openSnackBar() {
+    this.snackBar.open(`Festival has been liked!`, `OK!`, {
+      duration: 2000
+    });
+  }
 
   openSnackBar2() {
-    this.snackBar.open(`Added to the favorites!`, `OK!`,  {
+    this.snackBar.open(`Added to the favorites!`, `OK!`, {
       duration: 2000
     });
   }

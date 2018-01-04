@@ -31,8 +31,12 @@
         </p>
       </mat-card-content>
     </mat-card>
-    <div [hidden]="metalPromotion">
+    <div [hidden]="metalPromotion || festivalErrMess">
       <mat-spinner></mat-spinner><h4>Loading...Please wait</h4>
+    </div>
+    <div *ngIf="festivalErrMess">
+      <h2>Error</h2>
+      <h4>{{festivalErrMess}}</h4>
     </div>
 
     <mat-card *ngIf="drumPromotion" fxFlex>
@@ -47,8 +51,12 @@
         <p>{{drumPromotion.description}}</p>
       </mat-card-content>
     </mat-card>
-    <div [hidden]="drumPromotion">
+    <div [hidden]="drumPromotion || festivalErrMess">
       <mat-spinner></mat-spinner><h4>Loading...Please wait</h4>
+    </div>
+    <div *ngIf="festivalErrMess">
+      <h2>Error</h2>
+      <h4>{{festivalErrMess}}</h4>
     </div>
 
     <mat-card *ngIf="indiePromotion" fxFlex>
@@ -63,9 +71,13 @@
         <p>{{indiePromotion.description}}</p>
       </mat-card-content>
     </mat-card>
-    <div [hidden]="indiePromotion">
+    <div [hidden]="indiePromotion || festivalErrMess">
         <mat-spinner></mat-spinner><h4>Loading...Please wait</h4>
       </div>
+    <div *ngIf="festivalErrMess">
+      <h2>Error</h2>
+      <h4>{{festivalErrMess}}</h4>
+    </div>
   </div>
   <div fxLayout="row"
        fxLayout.sm="column"

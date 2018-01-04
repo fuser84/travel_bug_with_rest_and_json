@@ -11,19 +11,23 @@ export class HomeComponent implements OnInit {
   metalPromotion: Promotion;
   drumPromotion: Promotion;
   indiePromotion: Promotion;
+  festivalErrMess: string;
 
   constructor(private promotionservice: PromotionService,
               @Inject('BaseURL') private BaseURL) { }
 
   ngOnInit() {
     this.promotionservice.getUpcomingMetalPromotion()
-      .subscribe(metalPromotion => this.metalPromotion = metalPromotion);
+      .subscribe(metalPromotion => this.metalPromotion = metalPromotion,
+        errmess => this.festivalErrMess = <any>errmess);
 
     this.promotionservice.getUpcomingDrumPromotion()
-      .subscribe(drumPromotion => this.drumPromotion = drumPromotion);
+      .subscribe(drumPromotion => this.drumPromotion = drumPromotion,
+        errmess => this.festivalErrMess = <any>errmess);
 
     this.promotionservice.getUpcomingIndiePromotion()
-      .subscribe(indiePromotion => this.indiePromotion = indiePromotion);
+      .subscribe(indiePromotion => this.indiePromotion = indiePromotion,
+        errmess => this.festivalErrMess = <any>errmess);
   }
 
 }

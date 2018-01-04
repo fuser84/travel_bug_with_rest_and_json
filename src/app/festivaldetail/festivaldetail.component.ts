@@ -27,6 +27,7 @@ export class FestivaldetailComponent implements OnInit {
   festivalIds: number[];
   prev: number;
   next: number;
+  errMess: string;
 
   submitForm: FormGroup;
   comment: CommentLink;
@@ -57,7 +58,7 @@ export class FestivaldetailComponent implements OnInit {
 
   ngOnInit() {
     this.festivalservice.getFestivalIds()
-      .subscribe(festivalIds => this.festivalIds = festivalIds);
+      .subscribe(festivalIds => this.festivalIds = festivalIds, errmess => this.errMess = <any>errmess);
     // fetch info from the params
     this.route.params
       .switchMap((params: Params) => this.festivalservice.getFestival(+params['id']))

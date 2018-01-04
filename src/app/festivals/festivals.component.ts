@@ -3,9 +3,7 @@ import {Component, OnInit, Inject} from '@angular/core';
 import {Festival} from '../shared/festival';
 import {CommentLink} from '../shared/commentLink';
 // import { FESTIVALS } from '../shared/festivals';
-import { FestivalService } from '../services/festival.service';
-
-
+import {FestivalService} from '../services/festival.service';
 
 
 @Component({
@@ -16,6 +14,7 @@ import { FestivalService } from '../services/festival.service';
 export class FestivalsComponent implements OnInit {
 
   festivals: Festival[];
+  errMess: string;
 
 
   constructor(private festivalService: FestivalService,
@@ -23,8 +22,9 @@ export class FestivalsComponent implements OnInit {
   }
 
   ngOnInit() {
-     this.festivalService.getFestivals()
-      .subscribe(festivals => this.festivals = festivals);
+    this.festivalService.getFestivals()
+      .subscribe(festivals => this.festivals = festivals,
+        errmess => this.errMess = <any>errmess);
   }
 
 }

@@ -31,7 +31,8 @@ export class FestivalService {
   // <---Http approach-->
   getFestivals(): Observable<Festival[]> {
     return this.http.get(baseURL + 'festivals')
-      .map(res  =>  this.processHTTPMsgService.extractData(res) );
+      .map(res  =>  this.processHTTPMsgService.extractData(res) )
+    .catch(error => this.processHTTPMsgService.handleError(error));
   }
 
   // <--Promise approach-->
@@ -44,7 +45,8 @@ export class FestivalService {
   // <--Http--> approach
   getFestival(id: number): Observable<Festival> {
     return this.http.get(baseURL + 'festivals/' + id)
-      .map(res  =>  this.processHTTPMsgService.extractData(res));
+      .map(res  =>  this.processHTTPMsgService.extractData(res))
+      .catch(error => this.processHTTPMsgService.handleError(error));
   }
 
   // <--Promise approach -->
@@ -57,7 +59,8 @@ export class FestivalService {
   // <-- Http approach -->
   getFeaturedFestival(): Observable<Festival> {
     return this.http.get(baseURL + 'dishes?featured=true')
-      .map(res  =>  this.processHTTPMsgService.extractData(res)[0]);
+      .map(res  =>  this.processHTTPMsgService.extractData(res)[0])
+      .catch(error => this.processHTTPMsgService.handleError(error));
   }
 
 
@@ -71,12 +74,14 @@ export class FestivalService {
   // <--Http approach -->
   getFestivalPrices(): Observable<number[]> {
     return this.getFestivals()
-      .map(festivals => festivals.map(festival => festival.attendance_price));
+      .map(festivals => festivals.map(festival => festival.attendance_price))
+      .catch(error => this.processHTTPMsgService.handleError(error));
   }
 
   getFestivalIds(): Observable<number[]> {
     return this.getFestivals()
-      .map(festivals => festivals.map(festival => festival.id));
+      .map(festivals => festivals.map(festival => festival.id))
+      .catch(error => this.processHTTPMsgService.handleError(error));
   }
 
 }

@@ -94,7 +94,11 @@
     </mat-nav-list>
   </div>
 </div>
-<div [hidden]="festival">
+<div [hidden]="festival || errMess">
   <mat-spinner></mat-spinner>
   <h4>Loading ...Please wait</h4>
+</div>
+<div *ngIf="errMess">
+  <h2>Error</h2>
+  <h4>{{errMess}}</h4>
 </div>

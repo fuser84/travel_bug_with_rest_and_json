@@ -1,9 +1,10 @@
 import {Injectable} from '@angular/core';
 import {Festival} from '../shared/festival';
 // import {FESTIVALS} from '../shared/festivals'; not needed in case http or rest
-import { Http, Response } from '@angular/http';
-import { baseURL } from '../shared/baseurl';
-import { ProcessHttpmsgService } from './process-httpmsg.service';
+import {Http, Response} from '@angular/http';
+import {baseURL} from '../shared/baseurl';
+import {ProcessHttpmsgService} from './process-httpmsg.service';
+import {RestangularModule, Restangular} from 'ngx-restangular';
 
 // using RxJS
 import {Observable} from 'rxjs/Observable';
@@ -17,9 +18,10 @@ import 'rxjs/add/operator/delay';
 @Injectable()
 export class FestivalService {
 
-  constructor(private http: Http,
+  constructor(private restangular: Restangular,
               private processHTTPMsgService: ProcessHttpmsgService) {
   }
+
 // <---Promise approach--->
 //   getFestivals(): Promise<Festival[]> {
 //     return new Promise (resolve => {
@@ -29,10 +31,15 @@ export class FestivalService {
 //   }
 
   // <---Http approach-->
+  // getFestivals(): Observable<Festival[]> {
+  //   return this.http.get(baseURL + 'festivals')
+  //     .map(res  =>  this.processHTTPMsgService.extractData(res) )
+  //   .catch(error => this.processHTTPMsgService.handleError(error));
+  // }
+
+  // <--Restangular approach -->
   getFestivals(): Observable<Festival[]> {
-    return this.http.get(baseURL + 'festivals')
-      .map(res  =>  this.processHTTPMsgService.extractData(res) )
-    .catch(error => this.processHTTPMsgService.handleError(error));
+    return this.restangular.all('festivals').getList();
   }
 
   // <--Promise approach-->
@@ -42,11 +49,9 @@ export class FestivalService {
   //   });
   // }
 
-  // <--Http--> approach
+  // <--Restangular--> approach
   getFestival(id: number): Observable<Festival> {
-    return this.http.get(baseURL + 'festivals/' + id)
-      .map(res  =>  this.processHTTPMsgService.extractData(res))
-      .catch(error => this.processHTTPMsgService.handleError(error));
+    return this.restangular.one('festivals', id).get();
   }
 
   // <--Promise approach -->
@@ -56,11 +61,10 @@ export class FestivalService {
   //   });
   // }
 
-  // <-- Http approach -->
+  // <-- Restangular approach -->
   getFeaturedFestival(): Observable<Festival> {
-    return this.http.get(baseURL + 'dishes?featured=true')
-      .map(res  =>  this.processHTTPMsgService.extractData(res)[0])
-      .catch(error => this.processHTTPMsgService.handleError(error));
+    return this.restangular.all('festivals').getList({featured: true})
+      .map(festivals => festivals[0]);
   }
 
 

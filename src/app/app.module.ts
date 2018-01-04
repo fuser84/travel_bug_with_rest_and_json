@@ -44,6 +44,9 @@ import { LoginComponent } from './login/login.component';
 import { baseURL } from './shared/baseurl';
 import { ProcessHttpmsgService} from './services/process-httpmsg.service';
 
+import {RestangularModule, Restangular} from 'ngx-restangular';
+import {RestangularConfigFactory} from './shared/restConfig';
+
 
 @NgModule({
   declarations: [
@@ -70,7 +73,7 @@ import { ProcessHttpmsgService} from './services/process-httpmsg.service';
     MatSlideToggleModule, MatToolbarModule, MatListModule, MatGridListModule,
     MatCardModule, MatIconModule, MatProgressSpinnerModule, MatDialogModule, MatTableModule, MatProgressBarModule,
     ReactiveFormsModule, MatAutocompleteModule, AppRoutingModule, MatExpansionModule, MatSnackBarModule, MatNativeDateModule,
-    MatTooltipModule,
+    MatTooltipModule, RestangularModule.forRoot(RestangularConfigFactory),
     AgmCoreModule.forRoot({
       apiKey: 'AIzaSyDvSlqnrDrDU0FGtNYHjOAULFhxvZB515Y'
     })

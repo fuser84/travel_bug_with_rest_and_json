@@ -78,14 +78,12 @@ export class FestivalService {
   // <--Http approach -->
   getFestivalPrices(): Observable<number[]> {
     return this.getFestivals()
-      .map(festivals => festivals.map(festival => festival.attendance_price))
-      .catch(error => this.processHTTPMsgService.handleError(error));
+      .map(festivals => festivals.map(festival => festival.attendance_price));
   }
 
   getFestivalIds(): Observable<number[]> {
     return this.getFestivals()
-      .map(festivals => festivals.map(festival => festival.id))
-      .catch(error => this.processHTTPMsgService.handleError(error));
+      .map(festivals => festivals.map(festival => festival.id));
   }
 
 }

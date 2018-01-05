@@ -48,6 +48,8 @@ import {RestangularModule, Restangular} from 'ngx-restangular';
 import {RestangularConfigFactory} from './shared/restConfig';
 import { HighlightDirective } from './directives/highlight.directive';
 
+import { FeedbackService } from './services/feedback.service';
+
 
 @NgModule({
   declarations: [
@@ -80,7 +82,7 @@ import { HighlightDirective } from './directives/highlight.directive';
       apiKey: 'AIzaSyDvSlqnrDrDU0FGtNYHjOAULFhxvZB515Y'
     })
   ],
-  providers: [ FestivalService, PromotionService, ProcessHttpmsgService,
+  providers: [ FestivalService, PromotionService, ProcessHttpmsgService, FeedbackService,
     {provide: 'BaseURL', useValue: baseURL }],
   entryComponents: [
     LoginComponent

@@ -107,5 +107,27 @@
       </div>
     </div>
   </div>
-
+  <mat-card>
+    <mat-card-header>
+      <mat-card-title>See the progress of your feedback delivery <i class="fa fa-arrow-right" aria-hidden="true"></i>:</mat-card-title>
+    </mat-card-header>
+    <div fxFlex="40" *ngIf="preview" [@expand] >
+      <mat-nav-list>
+        <mat-list-item>
+          <p mat-line>First Name: {{ preview.firstname}}</p>
+          <p mat-line>Last Name: {{ preview.lastname }}</p>
+          <p mat-line>Tel. Number{{ preview.telnum}}</p>
+          <p mat-line>Email: {{ preview.email }}</p>
+          <p mat-line>Contact you?: {{ preview.agree }}</p>
+          <p mat-line>How?: {{ preview.contacttype }}</p>
+          <p mat-line>Feedback: {{ preview.message }}</p>
+        </mat-list-item>
+      </mat-nav-list>
+    </div>
+  </mat-card>
+  <div [hidden]="spinnerStatus">
+    <mat-spinner></mat-spinner>
+    <h3>Submitting Form</h3>
+  </div>
 </div>
+

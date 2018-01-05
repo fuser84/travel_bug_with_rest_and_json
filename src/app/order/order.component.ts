@@ -2,11 +2,19 @@ import {Component, OnInit} from '@angular/core';
 import {FormControl} from '@angular/forms';
 import {FestivalService} from '../services/festival.service';
 import {Festival} from '../shared/festival';
+import {flyInOut} from '../animations/app.animation';
 
 @Component({
   selector: 'app-order',
   templateUrl: './order.component.html',
-  styleUrls: ['./order.component.scss']
+  styleUrls: ['./order.component.scss'],
+  host: {
+    '[@flyInOut]': 'true',
+    'style': 'display:block;'
+  },
+  animations: [
+    flyInOut()
+  ]
 })
 export class OrderComponent implements OnInit {
 

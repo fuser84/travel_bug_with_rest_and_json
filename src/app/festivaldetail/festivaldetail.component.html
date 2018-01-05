@@ -6,7 +6,7 @@
      fxLayoutGap="10px"
      fxLayoutGap.xs="5px">
 
-  <div fxFlex="40" *ngIf="festival" [@visibility]="visibility">
+  <div fxFlex="40" *ngIf="festival" [@visibility]="visibility" [@expand]>
     <mat-card>
       <mat-card-header>
         <mat-card-title>
@@ -37,7 +37,7 @@
   </div>
 
   <div fxFlex="50">
-    <mat-nav-list *ngIf="festival" [@visibility]="visibility">
+    <mat-nav-list *ngIf="festival" [@visibility]="visibility" [@expand]>
       <h3>{{festival.name | uppercase}} location</h3>
       <agm-map [latitude]="festival.latitude" [longitude]="festival.longitude">
         <agm-marker [latitude]="festival.latitude" [longitude]="festival.longitude"></agm-marker>

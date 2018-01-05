@@ -18,7 +18,7 @@
        fxLayoutAlign.gt-md="space-around center"
        fxLayoutGap="5px">
 
-    <mat-card *ngIf="metalPromotion" fxFlex>
+    <mat-card *ngIf="metalPromotion" fxFlex [@expand]>
       <mat-card-header>
         <div mat-card-avatar></div>
         <mat-card-title>
@@ -39,7 +39,7 @@
       <h4>{{festivalErrMess}}</h4>
     </div>
 
-    <mat-card *ngIf="drumPromotion" fxFlex>
+    <mat-card *ngIf="drumPromotion" fxFlex [@expand]>
       <mat-card-header>
         <div mat-card-avatar></div>
         <mat-card-title>
@@ -59,7 +59,7 @@
       <h4>{{festivalErrMess}}</h4>
     </div>
 
-    <mat-card *ngIf="indiePromotion" fxFlex>
+    <mat-card *ngIf="indiePromotion" fxFlex [@expand]>
       <mat-card-header>
         <div mat-card-avatar></div>
         <mat-card-title>

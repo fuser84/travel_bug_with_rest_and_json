@@ -9,7 +9,7 @@
     </div>
   </div>
 
-  <div fxFlex *ngIf="festivals">
+  <div fxFlex *ngIf="festivals" [@expand]>
   <!--fxflex defines one flex unit-->
   <mat-grid-list cols="2" rowHeight="400px">
     <mat-grid-tile *ngFor="let festival of festivals" [routerLink]="['/festivaldetail', festival.id]" appHighlight>

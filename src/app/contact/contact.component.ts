@@ -5,11 +5,20 @@ import { Feedback, ContactType} from '../shared/feedback';
 
 // add modules to manipulate DOM
 import { AfterViewInit, ElementRef} from '@angular/core';
+import {flyInOut, expand} from '../animations/app.animation';
 
 @Component({
   selector: 'app-contact',
   templateUrl: './contact.component.html',
-  styleUrls: ['./contact.component.scss']
+  styleUrls: ['./contact.component.scss'],
+  host: {
+    '[@flyInOut]': 'true',
+    'style': 'display:block;'
+  },
+  animations: [
+    flyInOut(),
+    expand()
+  ]
 })
 
 export class ContactComponent implements OnInit, AfterViewInit {

@@ -12,26 +12,20 @@ import {CommentLink} from '../shared/commentLink';
 import {MatSnackBar} from '@angular/material';
 
 import 'rxjs/add/operator/switchMap';
-
-import { trigger, state, style, animate, transition } from '@angular/animations';
-
+import {flyInOut, visibility, expand} from '../animations/app.animation';
 
 @Component({
   selector: 'app-festivaldetail',
   templateUrl: './festivaldetail.component.html',
   styleUrls: ['./festivaldetail.component.scss'],
+  host: {
+    '[@flyInOut]': 'true',
+    'style': 'display:block;'
+  },
   animations: [
-    trigger('visibility', [
-      state('shown', style({
-        transform: 'scale(1.0)',
-        opacity: 1
-      })),
-      state('hidden', style({
-        transform: 'scale(0.5)',
-        opacity: 0
-      })),
-      transition('* => *', animate('0.5s ease-in-out'))
-    ])
+    visibility(),
+    flyInOut(),
+    expand()
   ]
 })
 export class FestivaldetailComponent implements OnInit {

@@ -1,9 +1,9 @@
 <mat-toolbar color="primary">
   <span id="logo1"><img src="/assets/img/logo.jpg" height=30 width=41></span>
-  <a mat-button routerLink="/home" routerLinkActive="active"><i class="material-icons">home</i>Home</a>
-  <a mat-button routerLink="/festivals" routerLinkActive="active"><i class="fa fa-lg fa-hand-peace-o"></i> Festivals</a>
-  <a mat-button routerLink="/order" routerLinkActive="active"><i class="fa fa-lg fa-ticket"></i> Order Ticket</a>
-  <a mat-button routerLink="/contact" routerLinkActive="active"><i class="fa fa-lg fa-handshake-o"></i> Contacts & more</a>
+  <a mat-button routerLink="/home" routerLinkActive="active"><i class="material-icons">home</i>{{ 'HomeLink' | translate }}</a>
+  <a mat-button routerLink="/festivals" routerLinkActive="active"><i class="fa fa-lg fa-hand-peace-o"></i> {{'FestivalsLink' | translate}}</a>
+  <a mat-button routerLink="/order" routerLinkActive="active"><i class="fa fa-lg fa-ticket"></i>{{'OrderTicketLink' | translate}}</a>
+  <a mat-button routerLink="/contact" routerLinkActive="active"><i class="fa fa-lg fa-handshake-o"></i>{{'ContactsLink' | translate}}</a>
 
   <span class="flex-spacer"></span>
   <a mat-button (click) = "openLoginForm()"><span class="fa fa-sign-in fa-lg"></span>Login</a>

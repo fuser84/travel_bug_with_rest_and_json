@@ -1,0 +1,11 @@
+{
+  "HomeLink": "Домашня сторінка",
+  "FestivalsLink": "Фести",
+  "OrderTicketLink": "Заказати білет",
+  "ContactsLink": "Наші контакти",
+  "Languages": {
+    "English": "Англійська",
+    "Norwegian": "Норвезська",
+    "Ukrainian": "Українська"
+  }
+}

@@ -4,7 +4,7 @@ import {Festival} from '../shared/festival';
 import {Http, Response} from '@angular/http';
 import {baseURL} from '../shared/baseurl';
 import {ProcessHttpmsgService} from './process-httpmsg.service';
-import {RestangularModule, Restangular} from 'ngx-restangular';
+import { Restangular} from 'ngx-restangular';
 
 // using RxJS
 import {Observable} from 'rxjs/Observable';

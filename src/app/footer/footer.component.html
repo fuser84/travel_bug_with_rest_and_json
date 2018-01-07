@@ -36,7 +36,7 @@
           <div fxFlex="50" fxFlexOffset="30">
             <mat-form-field color="accent">
               <mat-select placeholder="LANGUAGE">
-                <mat-option *ngFor="let language of languages" [value]="language">
+                <mat-option *ngFor="let language of languages" [value]="language" (click)="changeLanguage(language.name)">
                   {{language.viewValue}}
                 </mat-option>
               </mat-select>

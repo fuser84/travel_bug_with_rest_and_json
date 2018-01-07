@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import {TranslateService} from 'ng2-translate';
 
 
 @Component({
@@ -9,12 +10,14 @@ import { Component, OnInit } from '@angular/core';
 export class FooterComponent implements OnInit {
 
 
-  constructor() { }
+  constructor(private translate: TranslateService) {
+
+  }
 
   languages = [
-    {id: '1', viewValue: 'ENGLISH'},
-    {id: '2', viewValue: 'UKRAINIAN'},
-    {id: '3', viewValue: 'NORWEGIAN'}
+    {id: '1', viewValue: 'ENGLISH', name: 'en'},
+    {id: '2', viewValue: 'UKRAINIAN', name: 'ua'},
+    {id: '3', viewValue: 'NORWEGIAN', name: 'no'}
   ];
 
   currencies = [
@@ -26,4 +29,7 @@ export class FooterComponent implements OnInit {
   ngOnInit() {
   }
 
+  changeLanguage(lang: string): void {
+    this.translate.use(lang);
+  }
 }

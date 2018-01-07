@@ -13,38 +13,42 @@ import 'rxjs/add/operator/map';
 import 'rxjs/add/observable/of';
 import 'rxjs/add/operator/delay';
 
-import { RestangularModule, Restangular } from 'ngx-restangular';
+import { Restangular } from 'ngx-restangular';
 
 @Injectable()
 export class PromotionService {
 
-  constructor(private http: Http,
+  constructor(private http: Http, private restangular: Restangular,
               private processHTTPMsgService: ProcessHttpmsgService) {
   }
 
-  getPromotions(): Observable<Promotion[]> {
-    return this.http.get(baseURL + 'promotions')
-      .map(res  =>  this.processHTTPMsgService.extractData(res) );
-  }
+  // getPromotions(): Observable<Promotion[]> {
+  //   return this.http.get(baseURL + 'promotions')
+  //     .map(res  =>  this.processHTTPMsgService.extractData(res) );
+  // }
+  //
+  // getPromotion(id: number): Observable<Promotion> {
+  //   return this.http.get(baseURL + 'promotions/' + id)
+  //     .map(res => this.processHTTPMsgService.extractData(res));
+  // }
 
-  getPromotion(id: number): Observable<Promotion> {
-    return this.http.get(baseURL + 'promotions/' + id)
-      .map(res => this.processHTTPMsgService.extractData(res));
-  }
-
+  // getUpcomingMetalPromotion(): Observable<Promotion> {
+  //   return this.http.get(baseURL + 'promotions?upcoming=true')
+  //     .map(res => this.processHTTPMsgService.extractData(res)[0]);
+  // }
   getUpcomingMetalPromotion(): Observable<Promotion> {
-    return this.http.get(baseURL + 'promotions?upcoming=true')
-      .map(res => this.processHTTPMsgService.extractData(res)[0]);
+    return this.restangular.all('promotions').getList({upcoming: true})
+      .map(festivals => festivals[0]);
   }
 
   getUpcomingDrumPromotion(): Observable<Promotion> {
-    return this.http.get(baseURL + 'promotions?upcoming=true')
-      .map(res => this.processHTTPMsgService.extractData(res)[1]);
+    return this.restangular.all('promotions').getList({upcoming: true})
+      .map(festivals => festivals[1]);
   }
 
   getUpcomingIndiePromotion(): Observable<Promotion> {
-    return this.http.get(baseURL + 'promotions?upcoming=true')
-      .map(res => this.processHTTPMsgService.extractData(res)[2]);
+    return this.restangular.all('promotions').getList({upcoming: true})
+      .map(festivals => festivals[2]);
   }
 
 

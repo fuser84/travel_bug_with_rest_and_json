@@ -9,6 +9,7 @@ import {LoginComponent} from '../login/login.component';
 // add modules to manipulate DOM
 import { AfterViewInit, ElementRef} from '@angular/core';
 
+
 @Component({
   selector: 'app-header',
   templateUrl: './header.component.html',
@@ -23,7 +24,8 @@ export class HeaderComponent implements OnInit, AfterViewInit {
   myControl: FormControl = new FormControl();
 
   constructor(private festivalService: FestivalService,
-              private dialog: MatDialog, private elementRef: ElementRef) { }
+              private dialog: MatDialog, private elementRef: ElementRef) {
+  }
 
   ngOnInit() {
     this.festivalService.getFestivals()

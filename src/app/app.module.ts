@@ -2,7 +2,7 @@ import { BrowserModule } from '@angular/platform-browser';
 import { NgModule } from '@angular/core';
 import {BrowserAnimationsModule} from '@angular/platform-browser/animations';
 import {FormsModule, ReactiveFormsModule } from '@angular/forms';
-import {HttpModule} from '@angular/http';
+import {HttpModule, Http} from '@angular/http';
 import {FlexLayoutModule} from '@angular/flex-layout';
 import {
   MatButtonModule, MatCheckboxModule, MatDatepickerModule, MatFormFieldModule,
@@ -50,6 +50,13 @@ import { HighlightDirective } from './directives/highlight.directive';
 
 import { FeedbackService } from './services/feedback.service';
 
+// ng-translate modules
+import { TranslateModule, TranslateLoader, TranslateStaticLoader } from 'ng2-translate';
+
+// required for AOT compilation
+export function HttpLoaderFactory(http: Http) {
+  return new TranslateStaticLoader(http, '/assets/i18n', '.json');
+}
 
 @NgModule({
   declarations: [
@@ -77,10 +84,14 @@ import { FeedbackService } from './services/feedback.service';
     MatSlideToggleModule, MatToolbarModule, MatListModule, MatGridListModule,
     MatCardModule, MatIconModule, MatProgressSpinnerModule, MatDialogModule, MatTableModule, MatProgressBarModule,
     ReactiveFormsModule, MatAutocompleteModule, AppRoutingModule, MatExpansionModule, MatSnackBarModule, MatNativeDateModule,
-    MatTooltipModule, RestangularModule.forRoot(RestangularConfigFactory),
+    MatTooltipModule, RestangularModule.forRoot(RestangularConfigFactory), TranslateModule.forRoot({
+        provide: TranslateLoader,
+        useFactory: HttpLoaderFactory,
+        deps: [Http]
+    }),
     AgmCoreModule.forRoot({
       apiKey: 'AIzaSyDvSlqnrDrDU0FGtNYHjOAULFhxvZB515Y'
-    })
+    }),
   ],
   providers: [ FestivalService, PromotionService, ProcessHttpmsgService, FeedbackService,
     {provide: 'BaseURL', useValue: baseURL }],
